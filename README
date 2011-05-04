@@ -1,0 +1,30 @@
+ jQuery plugin to impliment local storage with optional AES
+ encryption support via the Gibberish-AES libraries
+
+ FEATURES:
+ - HTML5 localStorage support
+ - HTML5 sessionStorage support
+ - Cookie support
+ - AES encrypted storage support
+
+ REQUIREMENTS:
+ - jQuery libraries (required - http://www.jquery.com)
+ - jQuery cookie plugin (optional - http://plugins.jquery.com/files/jquery.cookie.js.txt)
+ - Gibberish-AES libraries (optional - https://github.com/mdp/gibberish-aes)
+
+ OPTIONS:
+ - appid:   Unique identifier for storage mechanism
+ - storage: HTML5 localStorage, sessionStorage and cookies supported
+ - dowhat:  Get or set local storage items
+ - data:    Data to be stored
+ - name:    Name of data to store or retrieve
+ - aes:     Use AES encryption for local storage
+ - key:     Client password for local storage aes encrypted items
+
+ Author: Jason Gerfen
+ Email: jason.gerfen@gmail.com
+ Copyright: Jason Gerfen
+ Last updated: 05.03.2011
+
+ License: GPL
+
