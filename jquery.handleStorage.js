@@ -113,6 +113,39 @@
   }
  }
 
+ /* default action set/get for all form elements */
+ $.handleAll = function(options, array) {
+  if (!array){
+   $.getStorage(options);
+  } else {
+   $.each(array, function(k, v){
+    $.setItem(options.storage, k, v);
+   });
+  }
+ }
+
+ /* create array of storage items (decrypting if specified */
+ $.getStorage = function(options) {
+  var ret = {};
+  $.each($('#'+form+' :text, :password, :file, input:hidden, input:checkbox:checked, input:radio:checked, textarea'), function(k, v){
+   if ($validateString(v)){
+    ret[k] = ((options.aes)&&(options.key)) ? GibberishAES.enc(v, options.key) : v; 
+   }
+  });
+  return ret;
+ }
+
+ /* create array of form elements and validate (encrypting if specified */
+ $.getForm = function(options) {
+  var ret = {};
+  $.each($('#'+form+' :text, :password, :file, input:hidden, input:checkbox:checked, input:radio:checked, textarea'), function(k, v){
+   if ($validateString(v)){
+    ret[k] = ((options.aes)&&(options.key)) ? GibberishAES.enc(v, options.key) : v; 
+   }
+  });
+  return ret;
+ }
+
  /* validate string integrity */
  $.validateString = function(string) {
   return ((string==='false')||(string.length===0)||(!string)||(string===null)||(string==='')||(typeof string==='undefined')) ? false : true;
@@ -153,13 +186,17 @@
   var defaults = {
    appid:   'jQuery.handleStorage', // Plugin name (unique ID for local, session or cookie storage id)
    storage: 'localStorage',         // localStorage || sessionStorage || cookie (cookie storage requires jQuery cookie plugin)
-   dowhat:  'set',                  // set || get storage items
+   dowhat:  '',                     // set || get storage items
+   form:    $(this).attr('id'),     // form element (used for processing entire form)
    k:       $(this).k,              // name to use for index
    v:       $(this).v,              // value to use for indexed storage item
    aes:     false,                  // Use encrypted storage?
    key:     '',                     // key for encrypted storage
    display: $(this).display         // div element used to display contents of storage
   };
+
+  /* return */
+  var ret = '';
 
   /* merge specified options with defaults */
   options = $.extend(defaults, options);
@@ -176,7 +213,13 @@
     ret = ((options.aes)&&(options.key)) ? $.setItem(options.storage, options.k, GibberishAES.enc(options.v, options.key)) : $.setItem(options.storage, options.k, options.v);
     break;
    default:
-    ret = false;
+    $('#'+options.form).submit(function(){
+     alert(1); 
+    });
+    $('.'+options.form).live('submit', function(){
+     ret = $.handleAll(options.form, $.getForm(options));
+    });
+    return false;
     break;
   }
 

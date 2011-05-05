@@ -3,7 +3,7 @@
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
  <title>jQuery handleStorage Plugin Demo</title>
- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+ <script src="http://code.jquery.com/jquery-1.6.min.js"></script>
  <!--script src="jquery.cookie.js"></script-->
  <!--script src="gibberish-aes.min.js"></script-->
  <script src="jquery.handleStorage.js"></script>
@@ -12,13 +12,68 @@
  <h3><strong>jQuery handleStorage plugin Demo</strong></h3>
  <noscript><h4>Demo will not work because JavaScript is disabled</h4></noscript>
 
+ <!-- localStorage default unencrypted examples -->
+ <script>
+  var $j = jQuery.noConflict();
+  $j(document).ready(function(){
+   $j('#defaultset').handleStorage();
+   $j('#defaultget').handleStorage();
+  });
+ </script>
+ <fieldset>
+  <legend><strong>Default setAll to localStorage</strong></legend>
+  <form id="defaultset" class="defaultset" method="post" action="">
+   <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" value="joe whatzitzname" />
+   </div>
+   <div>
+    <label for="name">Address</label>
+    <input type="text" name="address" id="address" value="over the hill" />
+   </div>
+   <div>
+    <label for="name">Phone</label>
+    <input type="text" name="phone" id="phone" value="123-456-7890" />
+   </div>
+   <div>
+    <label for="name">Email</label>
+    <input type="text" name="email" id="email" value="joe@rocks.com" />
+   </div>
+   <input type="submit" value="submit" />
+  </form>
+  <div id="defaultsetdiv"></div>
+ </fieldset>
+ <fieldset>
+  <legend><strong>Default getAll from localStorage</strong></legend>
+  <form id="defaultget" class="defaultget" method="post">
+   <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" />
+   </div>
+   <div>
+    <label for="name">Address</label>
+    <input type="text" name="address" id="address" />
+   </div>
+   <div>
+    <label for="name">Phone</label>
+    <input type="text" name="phone" id="phone" />
+   </div>
+   <div>
+    <label for="name">Email</label>
+    <input type="text" name="email" id="email" />
+   </div>
+   <input type="submit" value="submit" />
+  </form>
+  <div id="defaultgetdiv"></div>
+ </fieldset>
+
  <!-- localStorage unencrypted examples -->
  <script>
   var $j = jQuery.noConflict();
   $j(document).ready(function(){
    $j('#item01btn').bind('click', function(){
     $j('#item01').handleStorage({dowhat:'set', k:$j(this).attr('name'), v:$j(this).val(), display:'item01div'});
-    $j('#item02').val('#item01').val());
+    $j('#item02').val($j('#item01').val());
    });
    $j('#item02btn').bind('click', function(){
     $j('#item02').handleStorage({dowhat:'get', k:$j(this).attr('name'), display:'item02div'});
@@ -44,7 +99,7 @@
   $j(document).ready(function(){
    $j('#item03btn').bind('click blur', function(){
     $j('#item03').handleStorage({storage:'sessionStorage', dowhat:'set', k:$j(this).attr('name'), v:$j(this).val(), display:'item03div'});
-    $j('#item04').val('#item03').val());
+    $j('#item04').val($j('#item03').val());
    });
    $j('#item04btn').bind('click blur', function(){
     $j('#item04').handleStorage({storage:'sessionStorage', dowhat:'get', k:$j(this).attr('name'), display:'item04div'});
@@ -70,7 +125,7 @@
   $j(document).ready(function(){
    $j('#item05btn').bind('click blur', function(){
     $j('#item05').handleStorage({storage:'cookie', dowhat:'set', k:$j(this).attr('name'), v:$j(this).val(), display:'item05div'});
-    $j('#item06').val('#item05').val());
+    $j('#item06').val($j('#item05').val());
    });
    $j('#item06btn').bind('click blur', function(){
     $j('#item06').handleStorage({storage:'cookie', dowhat:'get', k:$j(this).attr('name'), display:'item06div'});
@@ -96,7 +151,7 @@
   $j(document).ready(function(){
    $j('#item07btn').bind('click blur', function(){
     $j('#item07').handleStorage({aes:true, dowhat:'set', k:$j(this).attr('name'), v:$j(this).val(), display:'item07div'});
-    $j('#item08').val('#item07').val());
+    $j('#item08').val($j('#item07').val());
    });
    $j('#item08btn').bind('click blur', function(){
     $j('#item08').handleStorage({aes:true, dowhat:'get', k:$j(this).attr('name'), display:'item08div'});
@@ -122,7 +177,7 @@
   $j(document).ready(function(){
    $j('#item09btn').bind('click blur', function(){
     $j('#item09').handleStorage({storage:'sessionStorage', aes:true, dowhat:'set', k:$j(this).attr('name'), v:$j(this).val(), display:'item09div'});
-    $j('#item10').val('#item09').val());
+    $j('#item10').val($j('#item09').val());
    });
    $j('#item10btn').bind('click blur', function(){
     $j('#item10').handleStorage({storage:'sessionStorage', aes:true, dowhat:'get', k:$j(this).attr('name'), display:'item10div'});
@@ -148,7 +203,7 @@
   $j(document).ready(function(){
    $j('#item11btn').bind('click blur', function(){
     $j('#item11').handleStorage({storage:'cookie', aes:true, dowhat:'set', k:$j(this).attr('name'), v:$j(this).val(), display:'item11div'});
-    $j('#item12').val('#item11').val());
+    $j('#item12').val($j('#item11').val());
    });
    $j('#item12btn').bind('click blur', function(){
     $j('#item12').handleStorage({storage:'cookie', aes:true, dowhat:'get', k:$j(this).attr('name'), display:'item12div'});
