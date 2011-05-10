@@ -17,7 +17,6 @@
  * - Gibberish-AES libraries (optional - https://github.com/mdp/gibberish-aes)
  *
  * OPTIONS:
- * - appid:   Unique identifier for storage mechanism
  * - storage: HTML5 localStorage, sessionStorage and cookies supported
  * - aes:     Use AES encryption for local storage
  * - uuid:    Random RFC-4122 string used as AES password
@@ -182,8 +181,8 @@
   /* if storage items exist attempt to populate form */
   $.setForm = function(options, arg){
    $.each(arg, function(a, b){
-    if (($('input[name='+a+']').attr('name')===a)&&($.validateString(b)!==false)){
-     $('input[name='+a+']').val(b);
+    if (($('#'+options.form+' input[name='+a+']').attr('name')===a)&&($.validateString(b)!==false)){
+     $('#'+options.form+' input[name='+a+']').val(b);
     }
    });
   }
