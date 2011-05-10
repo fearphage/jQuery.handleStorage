@@ -5,7 +5,7 @@
  - HTML5 localStorage support
  - HTML5 sessionStorage support
  - Cookie support
- - AES encrypted storage support
+ - AES encryption support
 
  REQUIREMENTS:
  - jQuery libraries (required - http://www.jquery.com)
@@ -13,13 +13,9 @@
  - Gibberish-AES libraries (optional - https://github.com/mdp/gibberish-aes)
 
  OPTIONS:
- - appid:   Unique identifier for storage mechanism
  - storage: HTML5 localStorage, sessionStorage and cookies supported
- - dowhat:  Get or set local storage items
- - data:    Data to be stored
- - name:    Name of data to store or retrieve
  - aes:     Use AES encryption for local storage
- - key:     Client password for local storage aes encrypted items
+ - uuid:    Random RFC-4122 string used as AES password
 
  Author: Jason Gerfen
  Email: jason.gerfen@gmail.com
