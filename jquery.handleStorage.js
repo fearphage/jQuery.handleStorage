@@ -170,10 +170,10 @@
 
   /* create array of storage items (decrypting if specified) */
   $.getStorage = function(options) {
-   var ret = {};
+   var ret = {}, x;
    $.each($('#'+options.form+' :text, :password, :file, input:hidden, input:checkbox:checked, input:radio:checked, textarea'), function(k, v){
-    if ($.validateString(v.name)!==false){
-     ret[v.name] = ((options.aes)&&(options.key)) ? GibberishAES.dec($.getItem(options.storage, v.name), options.uuid) : $.getItem(options.storage, v.name);
+    if (($.validateString(v.name)!==false)&&($.validateString($.getItem(options.storage, v.name))!==false)){
+     ret[v.name] = ((options.aes)&&(options.key)&&(x!==false)) ? GibberishAES.dec($.getItem(options.storage, v.name), options.uuid) : $.getItem(options.storage, v.name);
     }
    });
    return ret;
@@ -230,6 +230,7 @@
    }
   }
 
+  /* robot, do something */
   if (methods[method]){
    return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
   } else if (typeof method==='object' || ! method){
