@@ -7,22 +7,22 @@
  <script src="jquery.cookie.js"></script>
  <script src="gibberish-aes.min.js"></script>
  <script src="jquery.handleStorage.js"></script>
- <script>
-  var $j = jQuery.noConflict();
-  $j(document).ready(function(){
-   $j('#myForm').handleStorage({storage:'cookie',aes:true});
-  });
- </script>
 </head>
 
 <body>
  <h3><strong>jQuery handleStorage plugin Demo</strong></h3>
  <noscript><h4>Demo will not work because JavaScript is disabled</h4></noscript>
 
- <!-- localStorage default unencrypted examples -->
+ <!-- localStorage default unencrypted example -->
+ <script>
+  var $j = jQuery.noConflict();
+  $j(document).ready(function(){
+   $j('#myForm1').handleStorage();
+  });
+ </script>
  <fieldset>
-  <legend><strong>Default setAll to localStorage</strong></legend>
-  <form id="myForm" name="myForm" class="myForm" method="post" action="">
+  <legend><strong>Save to localStorage</strong></legend>
+  <form id="myForm1" name="myForm1" class="myForm1" method="post" action="">
    <div>
     <label for="name">Name</label>
     <input type="text" name="name" id="name" />
@@ -38,6 +38,164 @@
    <div>
     <label for="name">Email</label>
     <input type="text" name="email" id="email" />
+   </div>
+   <input type="submit" id="wtf" name="wtf" value="submit" />
+  </form>
+  <div id="defaultsetdiv"></div>
+ </fieldset>
+
+
+ <!-- sessionStorage default unencrypted example -->
+ <script>
+  var $j = jQuery.noConflict();
+  $j(document).ready(function(){
+   $j('#myForm2').handleStorage({storage:'sessionStorage'});
+  });
+ </script>
+ <fieldset>
+  <legend><strong>Save to sessionStorage</strong></legend>
+  <form id="myForm2" name="myForm2" class="myForm2" method="post" action="">
+   <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" />
+   </div>
+   <div>
+    <label for="name">Address</label>
+    <input type="text" name="address" id="address" />
+   </div>
+   <div>
+    <label for="name">Phone</label>
+    <input type="text" name="phone" id="phone" />
+   </div>
+   <div>
+    <label for="name">Email</label>
+    <input type="text" name="email" id="email" />
+   </div>
+   <input type="submit" id="wtf" name="wtf" value="submit" />
+  </form>
+  <div id="defaultsetdiv"></div>
+ </fieldset>
+
+ <!-- cookie Storage default unencrypted example -->
+ <script>
+  var $j = jQuery.noConflict();
+  $j(document).ready(function(){
+   $j('#myForm3').handleStorage({storage:'cookie'});
+  });
+ </script>
+ <fieldset>
+  <legend><strong>Save to cookies</strong></legend>
+  <form id="myForm3" name="myForm3" class="myForm3" method="post" action="">
+   <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" />
+   </div>
+   <div>
+    <label for="name">Address</label>
+    <input type="text" name="address" id="address" />
+   </div>
+   <div>
+    <label for="name">Phone</label>
+    <input type="text" name="phone" id="phone" />
+   </div>
+   <div>
+    <label for="name">Email</label>
+    <input type="text" name="email" id="email" />
+   </div>
+   <input type="submit" id="wtf" name="wtf" value="submit" />
+  </form>
+  <div id="defaultsetdiv"></div>
+ </fieldset>
+
+ <!-- localStorage default encrypted example -->
+ <script>
+  var $j = jQuery.noConflict();
+  $j(document).ready(function(){
+   $j('#myForm4').handleStorage({aes:true});
+  });
+ </script>
+ <fieldset>
+  <legend><strong>Save to localStorage using AES encryption</strong></legend>
+  <form id="myForm4" name="myForm4" class="myForm4" method="post" action="">
+   <div>
+    <label for="name1">Name</label>
+    <input type="text" name="name1" id="name1" />
+   </div>
+   <div>
+    <label for="name">Address</label>
+    <input type="text" name="address1" id="address1" />
+   </div>
+   <div>
+    <label for="name">Phone</label>
+    <input type="text" name="phone1" id="phone1" />
+   </div>
+   <div>
+    <label for="name">Email</label>
+    <input type="text" name="email1" id="email1" />
+   </div>
+   <input type="submit" id="wtf" name="wtf" value="submit" />
+  </form>
+  <div id="defaultsetdiv"></div>
+ </fieldset>
+
+
+ <!-- sessionStorage default encrypted examples -->
+ <script>
+  var $j = jQuery.noConflict();
+  $j(document).ready(function(){
+   $j('#myForm5').handleStorage({storage:'sessionStorage',aes:true});
+  });
+ </script>
+ <fieldset>
+  <legend><strong>Save to session storage using AES encryption</strong></legend>
+  <form id="myForm5" name="myForm5" class="myForm5" method="post" action="">
+   <div>
+    <label for="name">Name</label>
+    <input type="text" name="name1" id="name1" />
+   </div>
+   <div>
+    <label for="name">Address</label>
+    <input type="text" name="address1" id="address1" />
+   </div>
+   <div>
+    <label for="name">Phone</label>
+    <input type="text" name="phone1" id="phone1" />
+   </div>
+   <div>
+    <label for="name">Email</label>
+    <input type="text" name="email1" id="email1" />
+   </div>
+   <input type="submit" id="wtf" name="wtf" value="submit" />
+  </form>
+  <div id="defaultsetdiv"></div>
+ </fieldset>
+
+
+ <!-- cookie Storage default encrypted examples -->
+ <script>
+  var $j = jQuery.noConflict();
+  $j(document).ready(function(){
+   $j('#myForm6').handleStorage({storage:'cookie',aes:true});
+  });
+ </script>
+ <fieldset>
+  <legend><strong>Save to cookies using AES encryption</strong></legend>
+  <form id="myForm6" name="myForm6" class="myForm6" method="post" action="">
+   <div>
+    <label for="name">Name</label>
+    <input type="text" name="name1" id="name1" />
+   </div>
+   <div>
+    <label for="name">Address</label>
+    <input type="text" name="address1" id="address1" />
+   </div>
+   <div>
+    <label for="name">Phone</label>
+    <input type="text" name="phone1" id="phone1" />
+   </div>
+   <div>
+    <label for="name">Email</label>
+    <input type="text" name="email1" id="email1" />
    </div>
    <input type="submit" id="wtf" name="wtf" value="submit" />
   </form>
