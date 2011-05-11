@@ -35,7 +35,7 @@
  $.fn.handleStorage = function(method) {
 
   /* defined methods */
-  methods = {
+  var methods = {
 
    /* primary method of usage */
    init: function(options){
